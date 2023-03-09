@@ -1,11 +1,11 @@
-import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
-import { DataService } from "../data.service";
-import { Observable, Subscription, tap } from "rxjs";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from "rxjs";
 import { CommonService } from "../common.service";
 
 @Component({
   selector: 'app-refactored',
-  template: '<p>Current value: {{ currentValue$ | async }}</p>'
+  template: '<p>Current value: {{ currentValue$ | async }}</p>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefactoredComponent {
 

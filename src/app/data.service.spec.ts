@@ -1,7 +1,8 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { DataService } from './data.service';
-import { firstValueFrom, lastValueFrom } from "rxjs";
+import { firstValueFrom, lastValueFrom, of, take } from "rxjs";
+import { TestScheduler } from "rxjs/internal/testing/TestScheduler";
 
 describe('DataService', () => {
   let service: DataService;
@@ -35,4 +36,14 @@ describe('DataService', () => {
     tick(50000);
     expect(lastValuePromise).resolves.toBe(100);
   }));
+
+  describe('Using marbles', () => {
+    const testScheduler = new TestScheduler((actual, expected) => expect(actual).toEqual(expected));
+
+    it('generates the stream correctly', () => {
+      testScheduler.run(({ expectObservable }) => {
+        expectObservable(service.data$.pipe(take(3))).toBe('a 499ms b 499ms (c|)', { a: 1, b: 2, c: 3 });
+      });
+    });
+  });
 });

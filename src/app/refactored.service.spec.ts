@@ -25,8 +25,7 @@ describe('RefactoredService', () => {
   });
 
   it('records the last published value for late subscribers', async () => {
-    // connect instead?
-    service.even$.subscribe(); // added
+    service.even$.subscribe(); // added to trigger the obs; use connect instead?
 
     data$Mock.next(6);
 

@@ -38,6 +38,7 @@ describe('DataService', () => {
   }));
 
   describe('Using marbles', () => {
+    // https://rxjs.dev/guide/testing/marble-testing
     const testScheduler = new TestScheduler((actual, expected) => expect(actual).toEqual(expected));
 
     it('generates the stream correctly', () => {

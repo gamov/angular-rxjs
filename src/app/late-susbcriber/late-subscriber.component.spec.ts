@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsyncPipeComponent } from './async-pipe.component';
+import { LateSubscriberComponent } from './late-subscriber.component';
 
-describe('AsyncPipeComponent', () => {
-  //xxx ?
-  let component: AsyncPipeComponent;
-  let fixture: ComponentFixture<AsyncPipeComponent>;
+describe('LateSubscriberComponent', () => {
+  let component: LateSubscriberComponent;
+  let fixture: ComponentFixture<LateSubscriberComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AsyncPipeComponent ]
+      declarations: [ LateSubscriberComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AsyncPipeComponent);
+    fixture = TestBed.createComponent(LateSubscriberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

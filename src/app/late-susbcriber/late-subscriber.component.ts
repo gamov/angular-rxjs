@@ -4,8 +4,12 @@ import { CommonService } from "../common.service";
 
 @Component({
   selector: 'app-late-subscriber',
-  template: `<div><button #bt>Late Subscriber</button></div>\
-  <p *ngIf="lateValue$ | async as value">Late value: {{value}}</p>`,
+  template: `
+      <div>
+          <button #bt>Late Subscriber</button>
+      </div>
+      <p *ngIf="lateValue$ | async as value">Late value: {{value}}</p>
+  `,
 })
 export class LateSubscriberComponent implements AfterViewInit{
   @ViewChild('bt') button!: ElementRef<HTMLButtonElement>;

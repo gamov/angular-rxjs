@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { delay, Observable, of } from "rxjs";
+import { delay, of } from "rxjs";
 
 @Component({
   selector: 'app-async-pipe',

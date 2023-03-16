@@ -2,18 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonComponent } from './common.component';
 import { CommonService } from "../common.service";
-import { of, Subject } from "rxjs";
+import { Subject } from "rxjs";
 
 describe('CommonComponent', () => {
   let fixture: ComponentFixture<CommonComponent>;
-  let evenMockSubject: Subject<number>;
+  let evenSubject: Subject<number>;
 
   beforeEach(async () => {
-    evenMockSubject = new Subject<number>();
+    evenSubject = new Subject<number>();
 
     TestBed.configureTestingModule({
       declarations: [CommonComponent],
-      providers: [{ provide: CommonService, useValue: { even$: evenMockSubject } }],
+      providers: [{ provide: CommonService, useValue: { even$: evenSubject } }],
     });
 
     fixture = TestBed.createComponent(CommonComponent);
@@ -25,7 +25,7 @@ describe('CommonComponent', () => {
   });
 
   it('updates the value when a new one arrives', () => {
-    evenMockSubject.next(3);
+    evenSubject.next(3);
     fixture.detectChanges();
 
     expect(fixture.nativeElement.textContent).toBe('Current value: 3');
@@ -34,6 +34,6 @@ describe('CommonComponent', () => {
   it('unsubscribes when the component is destroyed', () => {
     fixture.destroy();
 
-    expect(evenMockSubject.observed).toBeFalsy();
+    expect(evenSubject.observed).toBeFalsy();
   });
 });

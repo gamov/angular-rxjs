@@ -6,13 +6,13 @@ import { bufferCount, firstValueFrom, lastValueFrom, Subject, Subscription, take
 
 describe('CommonService', () => {
   let service: CommonService;
-  let data$Mock: Subject<number>;
+  let dataSubject: Subject<number>;
 
   beforeEach(() => {
-    data$Mock = new Subject<number>();
+    dataSubject = new Subject<number>();
     TestBed.configureTestingModule({
       providers: [
-        { provide: DataService, useValue: { data$: data$Mock } }
+        { provide: DataService, useValue: { data$: dataSubject } }
       ]
     });
     service = TestBed.inject(CommonService);
@@ -21,13 +21,13 @@ describe('CommonService', () => {
   it('only emits the even numbers', async () => {
     const lastValuesPromise = lastValueFrom(service.even$.pipe(bufferCount(3), take(1)));
 
-    [0, 1, 2, 3, 4].forEach(value => data$Mock.next(value));
+    [0, 1, 2, 3, 4].forEach(value => dataSubject.next(value));
 
     await expect(lastValuesPromise).resolves.toEqual([0, 2, 4]);
   });
 
   it('holds the last published value for late subscribers', async () => {
-    data$Mock.next(6);
+    dataSubject.next(6);
 
     await expect(firstValueFrom(service.even$)).resolves.toBe(6);
   });
@@ -41,7 +41,7 @@ describe('CommonService', () => {
     });
 
     it('unsubscribes from the source', () => {
-      expect(data$Mock.observed).toBeFalsy();
+      expect(dataSubject.observed).toBeFalsy();
     });
 
     it('completes the exposed stream', () => {

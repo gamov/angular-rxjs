@@ -1,4 +1,4 @@
-# angular-rxjs
+# angular-rxjs ![CI status](https://github.com/gamov/angular-rxjs/actions/workflows/github-ci.yml/badge.svg)
 Showcase RxJS operators in the context of Angular; with their corresponding tests. 🍷
 
 You can run all tests with `npm test`.

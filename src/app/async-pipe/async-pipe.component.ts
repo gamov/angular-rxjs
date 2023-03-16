@@ -5,7 +5,7 @@ import { delay, Observable, of } from "rxjs";
   selector: 'app-async-pipe',
   template: `
     <ul>
-      <li *ngFor="let name of namesArray$ | async">
+      <li *ngFor="let name of (namesArray$ | async)">
         {{name}}
       </li>
     </ul>
@@ -16,5 +16,5 @@ import { delay, Observable, of } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsyncPipeComponent {
-  namesArray$ = of(['Céline', 'Cécile', 'Caroline']).pipe(delay(1000));
+  namesArray$ = of(['Céline', 'Cécile', 'Caroline']).pipe(delay(2000));
 }

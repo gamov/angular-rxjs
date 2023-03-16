@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { DataService } from "./data.service";
-import { filter, Observable, shareReplay, Subject, takeUntil } from "rxjs";
+import { connectable, filter, Observable, shareReplay, Subject, takeUntil } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,12 @@ export class RefactoredService implements OnDestroy{
       takeUntil(this.destroyedSubject),
       filter(value => value % 2 == 0),
       shareReplay(1)
-    )
+    );
+
+    connectable(this.even$).connect();
   }
 
   ngOnDestroy(): void {
     this.destroyedSubject.next();
-    this.destroyedSubject.complete();
   }
 }

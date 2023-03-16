@@ -23,6 +23,7 @@ describe('DataService', () => {
     const sub = service.data$.subscribe(nextValue => {
       currentValue = nextValue;
     });
+
     tick(499);
     expect(currentValue).toBe(1);
     tick(1)
@@ -33,17 +34,21 @@ describe('DataService', () => {
 
   it('stops at 100 and completes', fakeAsync(() => {
     const lastValuePromise = lastValueFrom(service.data$);
+
     tick(50000);
+
     expect(lastValuePromise).resolves.toBe(100);
   }));
 
   describe('Using marbles', () => {
     // https://rxjs.dev/guide/testing/marble-testing
-    const testScheduler = new TestScheduler((actual, expected) => expect(actual).toEqual(expected));
+    const testScheduler = new TestScheduler((actual, expected) =>
+      expect(actual).toEqual(expected));
 
     it('generates the stream correctly', () => {
       testScheduler.run(({ expectObservable }) => {
-        expectObservable(service.data$.pipe(take(3))).toBe('a 499ms b 499ms (c|)', { a: 1, b: 2, c: 3 });
+        expectObservable(service.data$.pipe(take(3)))
+          .toBe('a 499ms b 499ms (c|)', { a: 1, b: 2, c: 3 });
       });
     });
   });

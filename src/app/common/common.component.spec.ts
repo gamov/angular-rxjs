@@ -21,17 +21,19 @@ describe('CommonComponent', () => {
   });
 
   it('starts with no value', () => {
-    expect(fixture.nativeElement.textContent).toBe('Current value: ')
+    expect(fixture.nativeElement.textContent).toBe('Current value: ');
   });
 
   it('updates the value when a new one arrives', () => {
     evenMockSubject.next(3);
     fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toBe('Current value: 3')
+
+    expect(fixture.nativeElement.textContent).toBe('Current value: 3');
   });
 
   it('unsubscribes when the component is destroyed', () => {
     fixture.destroy();
+
     expect(evenMockSubject.observed).toBeFalsy();
   });
 });

@@ -6,6 +6,7 @@ import { CommonComponent } from './common/common.component';
 import { RefactoredComponent } from './refactored/refactored.component';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { LateSubscriberComponent } from './late-susbcriber/late-subscriber.component';
+import { FunWithOperatorsComponent } from './fun-with-operators/fun-with-operators.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { LateSubscriberComponent } from './late-susbcriber/late-subscriber.compo
     CommonComponent,
     RefactoredComponent,
     AsyncPipeComponent,
-    LateSubscriberComponent
+    LateSubscriberComponent,
+    FunWithOperatorsComponent
   ],
   imports: [
     BrowserModule

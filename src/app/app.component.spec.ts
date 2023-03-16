@@ -2,13 +2,19 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RefactoredComponent } from "./refactored/refactored.component";
 import { CommonComponent } from "./common/common.component";
+import { AsyncPipeComponent } from "./async-pipe/async-pipe.component";
+import { LateSubscriberComponent } from "./late-susbcriber/late-subscriber.component";
+import { FunWithOperatorsComponent } from "./fun-with-operators/fun-with-operators.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent, RefactoredComponent, CommonComponent
-      ],
+      declarations: [AppComponent,
+        CommonComponent,
+        RefactoredComponent,
+        AsyncPipeComponent,
+        LateSubscriberComponent,
+        FunWithOperatorsComponent],
     }).compileComponents();
   });
 

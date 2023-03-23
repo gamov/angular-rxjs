@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { delay, of } from "rxjs";
+import { delay, of, startWith } from "rxjs";
 
 @Component({
   selector: 'app-async-pipe',
@@ -9,12 +9,16 @@ import { delay, of } from "rxjs";
         {{name}}
       </li>
     </ul>
-    <div *ngIf="namesArray$ | async as names">
+    <ng-container *ngIf="namesArray$ | async as names">
       <p>There are {{ names.length }} names: ({{names.join(', ')}})</p>
-    </div>
+    </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsyncPipeComponent {
-  namesArray$ = of(['Céline', 'Cécile', 'Caroline']).pipe(delay(2000));
+  namesArray$ = of(['Céline', 'Cécile', 'Caroline'])
+    .pipe(
+      delay(2000),
+      startWith(['No data yet'])
+    );
 }

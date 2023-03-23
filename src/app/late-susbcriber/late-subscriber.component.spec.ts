@@ -11,7 +11,7 @@ describe('LateSubscriberComponent', () => {
 
   const comp = {
     button: () => fixture.debugElement.query(By.css('button')),
-    value: () => fixture.debugElement.query(By.css('p'))
+    value: () => fixture.debugElement.query(By.css('.value'))
   }
 
   beforeEach(async () => {

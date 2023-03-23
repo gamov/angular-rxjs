@@ -7,6 +7,7 @@ import { RefactoredComponent } from './refactored/refactored.component';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { LateSubscriberComponent } from './late-susbcriber/late-subscriber.component';
 import { FunWithOperatorsComponent } from './fun-with-operators/fun-with-operators.component';
+import { StreamControlComponent } from './stream-control/stream-control.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FunWithOperatorsComponent } from './fun-with-operators/fun-with-operato
     RefactoredComponent,
     AsyncPipeComponent,
     LateSubscriberComponent,
-    FunWithOperatorsComponent
+    FunWithOperatorsComponent,
+    StreamControlComponent
   ],
   imports: [
     BrowserModule

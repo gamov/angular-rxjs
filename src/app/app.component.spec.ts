@@ -5,6 +5,7 @@ import { CommonComponent } from "./common/common.component";
 import { AsyncPipeComponent } from "./async-pipe/async-pipe.component";
 import { LateSubscriberComponent } from "./late-susbcriber/late-subscriber.component";
 import { FunWithOperatorsComponent } from "./fun-with-operators/fun-with-operators.component";
+import { StreamControlComponent } from "./stream-control/stream-control.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,6 +14,7 @@ describe('AppComponent', () => {
         CommonComponent,
         RefactoredComponent,
         AsyncPipeComponent,
+        StreamControlComponent,
         LateSubscriberComponent,
         FunWithOperatorsComponent],
     }).compileComponents();

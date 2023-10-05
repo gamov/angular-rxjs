@@ -26,7 +26,7 @@ describe('RefactoredService', () => {
     await expect(lastValuesPromise).resolves.toEqual([0, 2, 4]);
   });
 
-  it('holds the last published value for late subscribers', async () => {
+  it('holds the last published value for late subscribers (shareReplay)', async () => {
     dataSubject.next(6);
 
     await expect(firstValueFrom(service.even$)).resolves.toBe(6);
